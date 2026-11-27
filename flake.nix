@@ -1,5 +1,20 @@
 {
   description = "Xberg CLI";
+
+  nixConfig = {
+    extra-substituters = [
+      "https://cache.nixos.org"
+      "https://nix-community.cachix.org"
+      "https://rogernavelsaker.cachix.org"
+      "https://nacosolutions.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      "rogernavelsaker.cachix.org-1:n1DtzMNhA9Rz4Kg3xlXOi/KceULu8VrMbs9WXyMFQNQ="
+      "nacosolutions.cachix.org-1:JzCiW2CLcuLXtwOVAg3SlSK/kpqWbfSFEVenyKVUlug="
+    ];
+  };
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
   outputs = { self, nixpkgs }:
     let
@@ -24,10 +39,10 @@
             '';
           in pkgs.stdenvNoCC.mkDerivation {
             pname = "xberg";
-            version = "1.3.10";
+            version = "1.5.4";
             src = pkgs.fetchurl {
-              url = "https://github.com/xberg-io/xberg/releases/download/v1.3.10/xberg-cli-x86_64-unknown-linux-gnu.tar.gz";
-              hash = "sha256-hR+0+OqfskRohlVdb0yuljwjTpI8m3PO4q+O/BW9Bj8=";
+              url = "https://github.com/xberg-io/xberg/releases/download/v1.5.4/xberg-cli-x86_64-unknown-linux-gnu.tar.gz";
+              hash = "sha256-hsDxPGu76ab6qSa8DgNOf5eTVlkJgonL6vEUFHx6WSE=";
             };
             sourceRoot = "xberg-cli-x86_64-unknown-linux-gnu";
             nativeBuildInputs = [ pkgs.autoPatchelfHook pkgs.gnutar pkgs.gzip pkgs.makeWrapper ];
